@@ -4,7 +4,7 @@ import { Outlet } from 'react-router-dom'
 export default function Dashboard() {
   return (
     <div>
-      <h1>Dashboard component</h1>
+      <h1>Dashboard Page</h1>
       <Outlet />
     </div>
   )
