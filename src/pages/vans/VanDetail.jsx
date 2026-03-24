@@ -14,23 +14,28 @@ export default function VanDetail() {
   }, [params.id])
 
   const search = location.state?.search || ""
+  const type = location.state?.type || "all"
 
   return (
     <div className='van-detail-container'>
       <Link
-        to={`..${search}`} 
+        to={`..${search}`}
         relative='path'
         className="back-button" >
-        &larr; <span>Back to all vans</span>
+        &larr; <span>Back to {type} vans</span>
       </Link>
       {van ? (
         <div className='van-detail'>
+          <div className='van-detail-info'>
           <img src={van.imageUrl} alt="Van Imagen" />
-          <i className={`van-type ${van.type} selected`}>{van.type}</i>
-          <h2>{van.name}</h2>
-          <p className='van-price'><span>{van.price}€</span>/day</p>
-          <p>{van.description}</p>
+          <div className='van-detail-text'>
+            <i className={`van-type ${van.type} selected`}>{van.type}</i>
+            <h2>{van.name}</h2>
+            <p className='van-price'><span>{van.price}€</span>/day</p>
+            <p>{van.description}</p>
           <button className='link-button'>Rent this van</button>
+          </div>
+          </div>
         </div>
       ) : <h2>Loading...</h2>
       }

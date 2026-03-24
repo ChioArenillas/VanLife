@@ -15,6 +15,7 @@ import HostVansDetails from './pages/Host/HostVansDetails'
 import HostVanPrice from './pages/Host/HostVanPrice'
 import HostVanPhoto from './pages/Host/HostVanPhoto'
 import HostVanInfo from './pages/Host/HostVanInfo'
+import NotFound from './pages/NotFound'
 
 export default function App() {
     return (
@@ -37,6 +38,7 @@ export default function App() {
                         </Route>
                         <Route path='reviews' element={<Reviews />} />
                     </Route>
+                    <Route path='*' element={<NotFound />}/>
                 </Route>
             </Routes>
         </BrowserRouter>

@@ -98,6 +98,9 @@ footer{
     min-height: 350px;
     color: white;
     padding: 45px 23px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 .home-container h1{
     font-weight: 700;
@@ -109,6 +112,7 @@ footer{
 }
 .home-container a {
     display: inline-block;
+    max-width: 350px;
     text-align: center;
     text-decoration: none;
     background-color: #ff8c38;
@@ -125,10 +129,41 @@ footer{
 .home-container a:hover {
     transform: translate(1px, 1px);
 }
+/* NOT FOUND */
+.notFound-container{
+    min-height: 350px;
+    padding: 45px 23px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+.notFound-container a {
+    display: inline-block;
+    max-width: 350px;
+    text-align: center;
+    text-decoration: none;
+    background-color: #161616;
+    border: none;
+    width: 100%;
+    margin-top: 27px;
+    padding-block: 0.75rem;
+    color: white;
+    font-weight: 700;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.1s ease-in-out ;
+}
+.notFound-container a:hover {
+    transform: translate(1px, 1px);
+}
+
 
 /* ABOUT PAGE */
 .about-hero-image {
-    max-width: 100%;
+    width: 100%;
+    max-height: 350px;
+    object-fit: cover;
 }
 .about-page-content{
     padding-inline: 23px;
@@ -171,19 +206,21 @@ footer{
     margin-right: 15px;
     text-decoration: none;
 }
-.van-list{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+.van-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 34px;
     justify-items: center;
-    gap: 34px;
     margin-top: 57px;
+
 }
+
 .van-tile a {
     color: #161616;
     text-decoration: none;
 }
 .van-tile img{
-    max-width: 100%;
+    max-width: 250px;
     border-radius: 5px;
 }
 .van-list-container button{
@@ -262,10 +299,20 @@ i[class*='van-type-']{
     display: flex;
     flex-direction: column;
     color: #161616;
-
+}
+.van-detail-info {
+    display: flex;
+    flex-direction: column; 
+    gap: 20px;
+}
+.van-detail-text{
+    margin: auto;
 }
 
 .van-detail img {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
     border-radius: 5px;
     margin-block: 47px;
 }
@@ -290,9 +337,18 @@ i[class*='van-type-']{
 }
 
 .van-detail .link-button {
+    max-width: 400px;
+    min-width: 300px;
     background-color: #FF8C38;
     color: white;
     font-size: 1.125rem;
+}
+@media (min-width: 768px) {
+  .van-detail-info {
+    flex-direction: row; 
+    align-items: center;
+    gap: 50px;
+  }
 }
 
 /* HOST PAGE */
