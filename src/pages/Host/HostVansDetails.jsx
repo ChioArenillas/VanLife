@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
-import { NavLink } from 'react-router-dom'
+import { useParams, Link, NavLink, Outlet } from 'react-router-dom'
 
 export default function HostVansDetails() {
   const params = useParams()
@@ -11,7 +10,6 @@ export default function HostVansDetails() {
       .then(resp => resp.json()
         .then(data => setCurrentVan(data.vans)))
   }, [params.id])
-  console.log(currentVan)
 
   const activeStyles = {
     fontWeight: "bold",
@@ -19,39 +17,43 @@ export default function HostVansDetails() {
     color: "#161616"
   }
 
+
   return (
-    <div>
-      <h2>Back to all vans</h2>
-      <div>
+    <div className='van-detail-container'>
+      <Link to=".." relative='path' className="back-button" >
+        &larr; <span>Back to all vans</span>
+      </Link>
+      <div className="host-van-detail-layout-container">
         {currentVan ? (
-          <div>
+          <div className="host-van-detail">
             <img src={currentVan.imageUrl} alt='Van Imagen' />
-            <div>
+            <div className="host-van-detail-info-text">
               <i className={`van-type ${currentVan.type} selected`}>{currentVan.type}</i>
-              <h2>{currentVan.name}</h2>
-              <p className='van-price'><span>{currentVan.price}€</span>/day</p>
+              <h3>{currentVan.name}</h3>
+              <h4 className='van-price'><span>{currentVan.price}€</span>/day</h4>
             </div>
           </div>
         )
           : <h2>Loading...</h2>}
-      </div>
-      <div>
-        <nav className='host-nav'>
-          <NavLink to="."
-            end
-            style={({ isActive }) => isActive ? activeStyles : null}>
-            Details
-          </NavLink>
-          <NavLink to="pricing"
-            style={({ isActive }) => isActive ? activeStyles : null}>
-            Pricing
-          </NavLink>
-          <NavLink to="photos"
-            style={({ isActive }) => isActive ? activeStyles : null}>
-            Photos
-          </NavLink>
-        </nav>
+        <div>
+          <nav className='host-van-detail-nav'>
+            <NavLink to="."
+              end
+              style={({ isActive }) => isActive ? activeStyles : null}>
+              Details
+            </NavLink>
+            <NavLink to="pricing"
+              style={({ isActive }) => isActive ? activeStyles : null}>
+              Pricing
+            </NavLink>
+            <NavLink to="photos"
+              style={({ isActive }) => isActive ? activeStyles : null}>
+              Photos
+            </NavLink>
+          </nav>
 
+        </div>
+        {<Outlet context={currentVan}/>}
       </div>
     </div>
   )
