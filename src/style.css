@@ -721,6 +721,9 @@ a{
 
 .host-reviews .review {
     margin-block: 25px;
+    background-color: white;
+    padding: 15px;
+    border-radius: 6px;
 }
 
 .host-reviews .review .info {

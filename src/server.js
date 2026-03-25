@@ -8,7 +8,8 @@ createServer({
     },
 
     seeds(server) {
-        server.create("van", { 
+        /* FOR HARD CODE THE VANS */
+        /* server.create("van", { 
             id: "1", 
             name: "Modest Explorer", 
             price: 60, 
@@ -62,21 +63,21 @@ createServer({
             type: "rugged", 
             hostId: "123" 
         })
-
+ */
         server.create("user", { 
             id: "123", 
-            email: "chio@gmail.com", 
+            email: "user@user.com", 
             password: "p123", 
-            name: "Chio" 
+            name: "User" 
         })
     },
 
     routes() {
-        this.namespace = "api"
+       this.namespace = "api"
         this.logging = false
         // this.timing = 2000  // => mock a 2 second delay in server response
         this.passthrough("https://firestore.googleapis.com/**")
-
+  /*
         this.get("/vans", (schema, request) => {
             // return new Response(400, {}, {error: "Error fetching data"})
             return schema.vans.all()
@@ -97,7 +98,7 @@ createServer({
             const id = request.params.id
             return schema.vans.findBy({ id, hostId: "123" })
         })
-        
+         */
         this.post("/login", (schema, request) => {
             const { email, password } = JSON.parse(request.requestBody)
             // ⚠️ This is an example version of authentication. 
