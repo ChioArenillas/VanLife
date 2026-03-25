@@ -27,6 +27,10 @@ header {
     align-items: center;
     padding-block: 10px;
 }
+header > nav {
+    display: flex;
+    align-items: center;
+}
 header .site-logo{
     color: black;
     margin-right: auto;
@@ -61,8 +65,8 @@ header a:hover {
 }
 
 header .login-icon {
-    height: 18px;
-    width: 18px;
+    height: 32px;
+    width: 32px;
 }
 
 header .login-link {
@@ -432,6 +436,23 @@ a{
     text-decoration: none;
     color: inherit;
 }
+.logout-button {
+    margin-top: 22px;
+    margin-left: auto;
+    margin-right: 20px;
+    width: 130px;
+}
+.logout-button > button{
+    height:45px;
+    width: 130px;
+    background-color: #FF8C38;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    font-family: "Inter", sans-serif;
+    cursor: pointer;
+}
+
 .host-dashboard-earnings {
     background-color: #ffead0;
     margin-top: 30px;

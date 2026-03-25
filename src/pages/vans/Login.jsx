@@ -45,13 +45,13 @@ export default function Login() {
                     name='email'
                     onChange={handleChange}
                     type="email"
-                    placeholder='Email address'
+                    placeholder='Email address (try: user@user.com)'
                     value={loginFormData.email} />
                 <input
                     name='password'
                     onChange={handleChange}
                     type="password"
-                    placeholder='Password'
+                    placeholder='Password (try: p123)'
                     value={loginFormData.password} />
                 <button disabled={status === "submitting"}>
                     {status === "submitting" ? "Logging in..." : "Log in"}</button>

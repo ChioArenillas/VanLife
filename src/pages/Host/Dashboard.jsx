@@ -4,6 +4,7 @@ import { BsStarFill } from 'react-icons/bs'
 import { getHostVans } from '../../api'
 import { transactionsData } from '../../data'
 import { reviewsData } from '../../data'
+import { useNavigate } from 'react-router-dom'
 
 export default function Dashboard() {
   const formatEUR = (value) => value.toLocaleString("es-ES") + " €"
@@ -16,6 +17,7 @@ export default function Dashboard() {
   const [vans, setVans] = useState([])
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
+  const navigate = useNavigate()
 
   useEffect(() => {
     setLoading(true)
@@ -24,6 +26,11 @@ export default function Dashboard() {
       .catch(err => setError(err))
       .finally(() => setLoading(false))
   }, [])
+
+  function fakeLogOut(){
+    localStorage.removeItem("loggedin")
+    navigate("/login")
+  }
 
   function renderVanElements(vans) {
     const hostVansEls = vans.map((van) => (
@@ -36,7 +43,6 @@ export default function Dashboard() {
         <Link to={`vans/${van.id}`}>View</Link>
       </div>
     ))
-
     return (
       <div className="host-vans-list">
         <section>{hostVansEls}</section>
@@ -54,6 +60,9 @@ export default function Dashboard() {
 
   return (
     <>
+    <div className='logout-button'>
+      <button onClick={fakeLogOut}>Log Out</button>
+    </div>
       <section className="host-dashboard-earnings">
         <div className="info">
           <h1>Welcome!</h1>

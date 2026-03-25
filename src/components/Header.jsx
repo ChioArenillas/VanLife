@@ -4,34 +4,25 @@ import loginIcon from '../assets/images/avatarIcon.png'
 
 export default function Header() {
 
-    function fakeLogOut() {
-        localStorage.removeItem("loggedin")
-    }
     return (
         <header>
             <Link className="site-logo" to="/">#VANLIFE</Link>
             <nav>
                 <NavLink
-                    to="host"
+                    to="vans"
                     className={({ isActive }) => isActive ? "active-link" : null}>
-                    Host
+                    Vans
                 </NavLink>
                 <NavLink
                     to="about"
                     className={({ isActive }) => isActive ? "active-link" : null}>
                     About
                 </NavLink>
-                <NavLink
-                    to="vans"
-                    className={({ isActive }) => isActive ? "active-link" : null}>
-                    Vans
-                </NavLink>
                 <Link
-                    to="login"
+                    to="host"
                     className='login-link'>
                     <img src={loginIcon} className='login-icon' />
                 </Link>
-                <button onClick={fakeLogOut}>Log out</button> {/* To be able to log out */}
             </nav>
         </header>
     )
