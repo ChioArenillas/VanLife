@@ -346,9 +346,7 @@ i[class*='van-type-']{
     text-decoration: none;
 }
 
-.van-detail-container .back-button:visited {
-    
-}
+
 
 .van-detail-container .back-button span {
     text-decoration: underline;
@@ -429,6 +427,85 @@ i[class*='van-type-']{
     font-weight: 600;
 }
 
+/* HOST DASHBOARD */
+a{
+    text-decoration: none;
+    color: inherit;
+}
+.host-dashboard-earnings {
+    background-color: #ffead0;
+    margin-top: 30px;
+    padding: 37px 26px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.host-dashboard-earnings > .info > h1 {
+    font-size: 36px;
+    color: #161616;
+    margin: 0;
+}
+
+.host-dashboard-earnings > .info > p {
+    color: #4d4d4d;
+}
+
+.host-dashboard-earnings > .info > p > span {
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.host-dashboard-earnings > .info > h2 {
+    margin: 0;
+    font-size: 38px;
+    color: #161616;
+    font-weight: 900;
+}
+
+.host-dashboard-reviews {
+    background-color: #ffddb2;
+    padding: 25px 26px;
+    display: flex;
+    align-items: center;
+}
+
+.host-dashboard-reviews > h2 {
+    margin: 0;
+}
+
+.host-dashboard-reviews .star {
+    color: #ff8c38;
+    margin-left: 15px;
+    font-size: 25px;
+}
+
+.host-dashboard-reviews p {
+    margin-left: 5px;
+    font-size: 20px;
+    color: #4d4d4d;
+    margin-right: auto;
+}
+
+.host-dashboard-reviews p > span {
+    font-weight: bold;
+    color: #161616;
+}
+
+.host-dashboard-vans {
+    padding: 38px 26px;
+}
+
+.host-dashboard-vans > .top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.host-dashboard-vans .host-vans-list {
+    padding-inline: 0;
+}
+
 /* HOST VANS */
 
 .host-van-link-wrapper {
@@ -458,6 +535,10 @@ i[class*='van-type-']{
     border-radius: 5px;
     margin-right: 17px;
 }
+.host-van-single > a {
+    margin-left: auto;
+    margin-right: 20px;
+}
 
 .host-van-info h3 {
     font-size: 20px;
@@ -468,6 +549,7 @@ i[class*='van-type-']{
 .host-van-info p {
     margin-block: 10px;
 }
+
 /* HOST VAN DETAILS */
 
 .host-van-detail-layout-container {
@@ -531,6 +613,7 @@ i[class*='van-type-']{
     text-decoration: underline;
     font-weight: 700;
 }
+
 /* HOST VAN DETAILS INFO */
 .host-van-detail-label > p > span{
     font-weight: 800;
@@ -546,4 +629,121 @@ i[class*='van-type-']{
 .host-van-detail-photos > img {
     max-width: 100px;
     border-radius: 8px;
+}
+
+/* HOST INCOME */
+.host-income {
+    padding-inline: 26px;
+    color: #161616;
+}
+
+.host-income > p {
+    color: #4d4d4d;
+}
+
+.host-income > p span {
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.host-income > h2 {
+    font-size: 38px;
+    color: #161616;
+    font-weight: 900;
+}
+
+.host-income .info-header > p {
+    color: #4d4d4d;
+}
+
+.host-income .info-header > p span {
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.host-income .info-header > h3 {
+    font-weight: 700;
+    font-size: 24px;
+    margin-top: 30px;
+}
+
+.host-income .transaction {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    margin-bottom: 31px;
+    padding: 20px 29px;
+    border-radius: 6px;
+}
+.host-income .transaction > h3 {
+    font-size: 28px;
+    font-weight: 600;
+    margin: 0;
+}
+
+.host-income .transaction > p {
+    font-weight: 500;
+    font-size: 20px;
+    color: #4d4d4d;
+}
+
+/* HOST REVIEWS */
+.host-reviews {
+    padding-inline: 26px;
+    color: #161616;
+    margin-top: 30px;
+}
+
+.host-reviews .top-text {
+    display: flex;
+    align-items: center;
+    margin-bottom: 32px;
+}
+
+.host-reviews .top-text > h2 {
+    font-weight: 700;
+    font-size: 32px;
+    margin: 0;
+    margin-right: 20px;
+}
+
+.host-reviews .top-text > p {
+    margin: 0;
+    color: #4d4d4d;
+}
+
+.host-reviews .top-text > p span {
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+
+.host-reviews .review {
+    margin-block: 25px;
+}
+
+.host-reviews .review .info {
+    display: flex;
+}
+
+.host-reviews .review .name {
+    color: #161616;
+    margin-right: 10px;
+    font-weight: 600;
+}
+
+.host-reviews .review .date {
+    color: #8c8c8c;
+}
+
+.host-reviews hr {
+    background-color: #c7c7c7;
+    height: 1px;
+    border: 0;
+}
+
+.host-reviews .review-star {
+    color: #ff8c38;
+    margin-right: 5px;
 }
