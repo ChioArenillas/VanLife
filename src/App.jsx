@@ -15,7 +15,9 @@ import HostVansDetails from './pages/Host/HostVansDetails'
 import HostVanPrice from './pages/Host/HostVanPrice'
 import HostVanPhoto from './pages/Host/HostVanPhoto'
 import HostVanInfo from './pages/Host/HostVanInfo'
-import NotFound from './pages/NotFound'
+import NotFound from './pages/vans/NotFound'
+import Login from './pages/vans/Login'
+import AuthRequired from './components/AuthRequired'
 
 export default function App() {
     return (
@@ -26,19 +28,24 @@ export default function App() {
                     <Route path='about' element={<About />} />
                     <Route path='vans' element={<Vans />} />
                     <Route path='vans/:id' element={<VanDetail />} />
+                    <Route path='login' element={<Login />} />
 
-                    <Route path='host' element={<HostLayout />}>
-                        <Route index element={<Dashboard />} />
-                        <Route path='income' element={<Income />} />
-                        <Route path='vans' element={<HostVans />} />
-                        <Route path='vans/:id' element={<HostVansDetails />} >
-                            <Route index element={<HostVanInfo />} />
-                            <Route path='pricing' element={<HostVanPrice />} />
-                            <Route path='photos' element={<HostVanPhoto />} />
+
+                    <Route  element={<AuthRequired />}>
+                        <Route path='host' element={<HostLayout />}>
+                            <Route index element={<Dashboard />} />
+                            <Route path='income' element={<Income />} />
+                            <Route path='vans' element={<HostVans />} />
+                            <Route path='vans/:id' element={<HostVansDetails />} >
+                                <Route index element={<HostVanInfo />} />
+                                <Route path='pricing' element={<HostVanPrice />} />
+                                <Route path='photos' element={<HostVanPhoto />} />
+                            </Route>
+                            <Route path='reviews' element={<Reviews />} />
                         </Route>
-                        <Route path='reviews' element={<Reviews />} />
                     </Route>
-                    <Route path='*' element={<NotFound />}/>
+
+                    <Route path='*' element={<NotFound />} />
                 </Route>
             </Routes>
         </BrowserRouter>

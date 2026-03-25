@@ -59,6 +59,16 @@ header a:hover {
 .link-button:hover{
     transform: translate(1px, 1px);
 }
+
+header .login-icon {
+    height: 18px;
+    width: 18px;
+}
+
+header .login-link {
+    display: inline-flex;
+    align-items: center;
+}
 .back-button {
     display: block;
     color: black;
@@ -89,7 +99,85 @@ footer{
     text-decoration: underline;
     color: #161616;
 }
+/* LOGIN */
 
+.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-inline: 27px;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 500px;    
+}
+
+.login-form > input {
+    border: 1px solid rgba(209, 213, 219);
+    height: 40px;
+    text-indent: 10px;
+    font-family: "Inter", sans-serif;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
+    font-weight: 400;
+}
+
+.login-form > input:focus {
+    outline: none;
+}
+
+.login-form > input:first-of-type {
+    border-radius: 6px 6px 0px 0px;
+}
+
+.login-form > input:last-of-type {
+    border-radius: 0px 0px 6px 6px;
+    border-top: none;
+}
+
+.login-form > button {
+    background-color: #FF8C38;
+    border: none;
+    border-radius: 6px;
+    height: 55px;
+    margin-top: 22px;
+    color: white;
+    font-family: "Inter", sans-serif;
+}
+
+.login-first {
+    color: rgb(255, 106, 0);
+}
+/* NOT FOUND */
+.notFound-container{
+    min-height: 350px;
+    padding: 45px 23px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+.notFound-container a {
+    display: inline-block;
+    max-width: 350px;
+    text-align: center;
+    text-decoration: none;
+    background-color: #161616;
+    border: none;
+    width: 100%;
+    margin-top: 27px;
+    padding-block: 0.75rem;
+    color: white;
+    font-weight: 700;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.1s ease-in-out ;
+}
+.notFound-container a:hover {
+    transform: translate(1px, 1px);
+}
 
 /* HOME PAGE */
 .home-container{
@@ -129,36 +217,6 @@ footer{
 .home-container a:hover {
     transform: translate(1px, 1px);
 }
-/* NOT FOUND */
-.notFound-container{
-    min-height: 350px;
-    padding: 45px 23px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-}
-.notFound-container a {
-    display: inline-block;
-    max-width: 350px;
-    text-align: center;
-    text-decoration: none;
-    background-color: #161616;
-    border: none;
-    width: 100%;
-    margin-top: 27px;
-    padding-block: 0.75rem;
-    color: white;
-    font-weight: 700;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: transform 0.1s ease-in-out ;
-}
-.notFound-container a:hover {
-    transform: translate(1px, 1px);
-}
-
-
 /* ABOUT PAGE */
 .about-hero-image {
     width: 100%;
@@ -193,6 +251,7 @@ footer{
     color: white;
     border-radius: 10px;
 }
+
 /* VAN PAGE */
 .van-list-container{
     padding-inline: 23px;

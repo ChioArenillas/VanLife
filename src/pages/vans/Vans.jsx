@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Link, useSearchParams } from 'react-router-dom'
+import { Link, useParams, useSearchParams } from 'react-router-dom'
 import { getVans } from '../../api'
 
 export default function Vans() {
@@ -25,6 +25,13 @@ export default function Vans() {
     loadVans()
   }, [])
 
+  if (loading) {
+    return <h1 aria-live='polite'>Loading...</h1>
+  }
+  if(error){
+    return <h1 aria-live='assertive'>There was an error: {error.message}</h1>
+  }
+
   const displayedVans = typeFilter ? vans.filter(van => van.type === typeFilter) : vans
 
   const vanElements = displayedVans.map(van => (
@@ -44,12 +51,6 @@ export default function Vans() {
 
     </div>
   ))
-  if (loading) {
-    return <h1 aria-live='polite'>Loading...</h1>
-  }
-  if(error){
-    return <h1 aria-live='assertive'>There was an error: {error.message}</h1>
-  }
 
   return (
     <div className='van-list-container'>

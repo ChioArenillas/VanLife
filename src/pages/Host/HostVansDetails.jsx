@@ -24,7 +24,7 @@ export default function HostVansDetails() {
         &larr; <span>Back to all vans</span>
       </Link>
       <div className="host-van-detail-layout-container">
-        {currentVan ? (
+        {currentVan && (
           <div className="host-van-detail">
             <img src={currentVan.imageUrl} alt='Van Imagen' />
             <div className="host-van-detail-info-text">
@@ -33,8 +33,7 @@ export default function HostVansDetails() {
               <h4 className='van-price'><span>{currentVan.price}€</span>/day</h4>
             </div>
           </div>
-        )
-          : <h2>Loading...</h2>}
+        )}
         <div>
           <nav className='host-van-detail-nav'>
             <NavLink to="."
@@ -51,7 +50,6 @@ export default function HostVansDetails() {
               Photos
             </NavLink>
           </nav>
-
         </div>
         {<Outlet context={currentVan}/>}
       </div>
