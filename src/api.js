@@ -1,11 +1,31 @@
-// A function whose only purpose is to delay execution
-// for the specified # of milliseconds when used w/ `await`
-// e.g. inside an async function:
-// await sleep(2000)  => pauses the function for 2 seconds before moving on
-function sleep(ms) {
-    return new Promise(resolve => setTimeout(() => resolve(), ms))
+import { initializeApp } from "firebase/app";
+import { getFireStore, collection, getDocs } from "firebase/firestore/lite"
+
+const firebaseConfig = {
+  apiKey: "AIzaSyD3CNS5Az_VUxAvl2pjE7GdUJMFnteSjFE",
+  authDomain: "vanlife-9b805.firebaseapp.com",
+  projectId: "vanlife-9b805",
+  storageBucket: "vanlife-9b805.firebasestorage.app",
+  messagingSenderId: "703416533744",
+  appId: "1:703416533744:web:90faf442c41b2c66e7b835"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFireStore(app)
+
+const vansCollectionRef = collection(db, "vans")
+
+export async function getVans() {
+    const snapshot = await getDocs(vansCollectionRef)
+    const vans = snapshot.docs.pam(doc => ({
+        ...doc.data(),
+        id: doc.id
+    }))
+    return vans
 }
 
+
+/* 
 export async function getVans(id) {
     const url = id ? `/api/vans/${id}` : '/api/vans'
     const res = await fetch(url)
@@ -18,7 +38,7 @@ export async function getVans(id) {
     }
     const data = await res.json()
     return data.vans
-}
+} */
 
 export async function getHostVans(id) {
     const url = id ? `/api/host/${id}` : '/api/host/vans'
