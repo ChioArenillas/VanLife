@@ -2,13 +2,13 @@
 
 ## 🧩 Description
 
-VanLife is a web application built with React that simulates a van rental service. It allows users to explore available vans, view details, and access a host dashboard with income and review statistics. It also includes a login/logout simulator to display private user content.
+VanLife is a web application built with React that simulates a van rental service. It fetches van data from a Firebase database, allowing users to explore available vans and view details. The app also includes a client login simulation that grants access to a dashboard with private information, such as income and review statistics.
 
-The project focuses on building a clean and responsive interface using React and essential libraries, without relying on heavy UI frameworks. The database is stored in Firebase, allowing persistent data management if the app is connected to a real backend.
+The project emphasizes building a clean and responsive interface using React and essential libraries, without relying on heavy UI frameworks. Firebase provides the backend for persistent data management, making it easy to connect to a real database if needed.
 
 ## 🚀 Live Demo
 
-https://VanLife.vercel.app/
+https://van-life-web.vercel.app/
 
 ## 🚀 Technologies
 
@@ -20,10 +20,9 @@ https://VanLife.vercel.app/
 
 ## 🎯 Features
 
-* Explore vans with images, prices, and detailed views
-* Host dashboard with income and review statistics
-* Login/logout simulator using localStorage
-* Display of income with charts (bar and line graphs)
+* Explore vans with images, prices, and detailed views fetched from Firebase
+* Client dashboard simulation with income and review statistics
+* Login/logout simulator granting access to private user content
 * SPA navigation with React Router DOM
 * Clean and responsive user interface
 
@@ -31,8 +30,7 @@ https://VanLife.vercel.app/
 
 * Functional React components and hooks (useState, useEffect)
 * Routing and private content handling with React Router DOM
-* Backend simulation using MirageJS
-* Data visualization with Chart.js and react-chartjs-2
+* Integration with Firebase for data storage and retrieval
 * Separation of concerns (structure, style, logic)
 * Integration with Firebase for data storage
 
