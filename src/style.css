@@ -423,7 +423,7 @@ i[class*='van-type-']{
     text-decoration: none;
     color: #4D4D4D;
     font-weight: 500;
-    padding: 5px 20px;
+    padding: 5px 15px;
 }
 
 .host-nav a:hover {
