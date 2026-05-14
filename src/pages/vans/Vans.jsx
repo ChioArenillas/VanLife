@@ -1,36 +1,16 @@
 import React, { useEffect, useState } from 'react'
-import { Link, useParams, useSearchParams } from 'react-router-dom'
+import { Link, useLoaderData, useParams, useSearchParams } from 'react-router-dom'
 import { getVans } from '../../api'
 
+export function loader(){
+  return getVans()
+}
+
 export default function Vans() {
-  const [vans, setVans] = useState([])
   const [searchParams, setSearchParams] = useSearchParams()
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState(null)
+  const vans = useLoaderData()
 
   const typeFilter = searchParams.get("type")
-
-  useEffect(() => {
-    async function loadVans() {
-      setLoading(true)
-      try {
-        const data = await getVans()
-        setVans(data)
-      } catch (err) {
-        setError(err)
-      } finally {
-        setLoading(false)
-      }
-    }
-    loadVans()
-  }, [])
-
-  if (loading) {
-    return <h1 aria-live='polite'>Loading...</h1>
-  }
-  if(error){
-    return <h1 aria-live='assertive'>There was an error: {error.message}</h1>
-  }
 
   const displayedVans = typeFilter ? vans.filter(van => van.type === typeFilter) : vans
 
