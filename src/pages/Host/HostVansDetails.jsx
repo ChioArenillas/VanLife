@@ -1,34 +1,15 @@
 import React, { useEffect, useState } from 'react'
-import { useParams, Link, NavLink, Outlet } from 'react-router-dom'
-import { getVan } from '../../api'
+import { useParams, Link, NavLink, Outlet, useLocation, useLoaderData } from 'react-router-dom'
+import { getHostVans, getVan } from '../../api'
+import { requireAuth } from '../../utils'
+
+export function loader({params}){
+  await requireAuth()
+  return getHostVans(params.id)
+}
 
 export default function HostVansDetails() {
-  const { id } = useParams()
-  const [currentVan, setCurrentVan] = useState(null)
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState(null)
-
-  useEffect(() => {
-    async function loadVans(){
-      setLoading(true)
-      try {
-        const data = await getVan(id)
-        setCurrentVan(data)
-      } catch (err) {
-        setError(err)
-      } finally {
-        setLoading(false)
-      }
-    }
-    loadVans()
-  }, [id])
-
-  if(loading){
-    return <h1>Loading...</h1>
-  }
-  if(error) {
-    return <h1>There was an error: {error.message}</h1>
-  }
+  const currentVan = useLoaderData()
 
   const activeStyles = {
     fontWeight: "bold",
@@ -36,14 +17,12 @@ export default function HostVansDetails() {
     color: "#161616"
   }
 
-
   return (
     <div className='van-detail-container'>
       <Link to=".." relative='path' className="back-button" >
         &larr; <span>Back to all vans</span>
       </Link>
       <div className="host-van-detail-layout-container">
-        {currentVan && (
           <div className="host-van-detail">
             <img src={currentVan.imageUrl} alt='Van Imagen' />
             <div className="host-van-detail-info-text">
@@ -52,7 +31,6 @@ export default function HostVansDetails() {
               <h4 className='van-price'><span>{currentVan.price}€</span>/day</h4>
             </div>
           </div>
-        )}
         <div>
           <nav className='host-van-detail-nav'>
             <NavLink to="."
@@ -70,7 +48,7 @@ export default function HostVansDetails() {
             </NavLink>
           </nav>
         </div>
-        {<Outlet context={currentVan}/>}
+        <Outlet context={{currentVan}}/>
       </div>
     </div>
   )

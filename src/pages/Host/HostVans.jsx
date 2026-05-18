@@ -1,26 +1,16 @@
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLoaderData, useLocation } from 'react-router-dom'
 import { getHostVans } from '../../api'
+import { requireAuth } from '../../utils'
+
+export function loader(){
+  await requireAuth()
+  return getHostVans()
+}
 
 export default function HostVans() {
-  const [hostVans, setHostVans] = useState([])
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState(null)
-
-  useEffect(() => {
-    async function loadVans(){
-      setLoading(true)
-      try{
-        const data = await getHostVans()
-        setHostVans(data)
-      } catch(err){
-        setError(err)
-      } finally {
-        setLoading(false)
-      }
-    }
-    loadVans()
-  }, [])
+  const location = useLocation()
+  const hostVans = useLoaderData()
 
   const hostVansElements = hostVans.map(van => (
     <Link to={van.id} key={van.id} className='host-van-link-wrapper'>
@@ -33,24 +23,14 @@ export default function HostVans() {
       </div>
     </Link>
   ))
-
-  if (loading){
-    return <h1>Loading...</h1>
-  }
-  if(error){
-    return <h1>There was an error: {error.message}</h1>
-  }
   
   return (
     <div>
       <h1 className='host-vans-title'>Your listed vans</h1>
       <div className='host-vans-list'>
-        {
-          hostVans.length > 0 ? (
             <section>
               {hostVansElements}
-            </section>) : <h2>Loading...</h2>
-        }
+            </section>
       </div>
     </div>
   )
