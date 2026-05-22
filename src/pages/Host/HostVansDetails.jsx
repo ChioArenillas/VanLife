@@ -3,7 +3,7 @@ import { useParams, Link, NavLink, Outlet, useLocation, useLoaderData } from 're
 import { getHostVans, getVan } from '../../api'
 import { requireAuth } from '../../utils'
 
-export function loader({params}){
+export async function loader({params}){
   await requireAuth()
   return getHostVans(params.id)
 }

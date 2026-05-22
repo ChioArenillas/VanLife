@@ -19,7 +19,7 @@ export default function Header() {
                     About
                 </NavLink>
                 <Link
-                    to="host"
+                    to="login"
                     className='login-link'>
                     <img src={loginIcon} className='login-icon' />
                 </Link>

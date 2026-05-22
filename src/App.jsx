@@ -25,7 +25,6 @@ import HostVanPhoto from "./pages/Host/HostVanPhoto";
 import HostVanInfo from "./pages/Host/HostVanInfo";
 import NotFound from "./pages/vans/NotFound";
 import Login from "./pages/vans/Login";
-import AuthRequired from "./components/AuthRequired";
 import Error from "./components/Error";
 import { requireAuth } from "./utils";
 
