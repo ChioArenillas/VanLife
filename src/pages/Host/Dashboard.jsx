@@ -5,6 +5,7 @@ import { getHostVans } from '../../api'
 import { transactionsData } from '../../data'
 import { reviewsData } from '../../data'
 import { useNavigate } from 'react-router-dom'
+import { useAuth } from '../../context/AuthContext'
 
 export default function Dashboard() {
   const formatEUR = (value) => value.toLocaleString("es-ES") + " €"
@@ -18,6 +19,7 @@ export default function Dashboard() {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
   const navigate = useNavigate()
+  const { user, logout } = useAuth()
 
   useEffect(() => {
     setLoading(true)
@@ -27,9 +29,9 @@ export default function Dashboard() {
       .finally(() => setLoading(false))
   }, [])
 
-  function fakeLogOut(){
-    localStorage.removeItem("loggedin")
-    navigate("/login")
+  function handleLogout(){
+    logout()
+    navigate("/login", {replace: true})
   }
 
   function renderVanElements(vans) {
@@ -61,7 +63,7 @@ export default function Dashboard() {
   return (
     <>
     <div className='logout-button'>
-      <button onClick={fakeLogOut}>Log Out</button>
+      <button onClick={handleLogout}>Log Out</button>
     </div>
       <section className="host-dashboard-earnings">
         <div className="info">

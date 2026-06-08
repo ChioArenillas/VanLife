@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { loginUser } from '../../api'
+import { useAuth } from '../../context/AuthContext'
 
 export default function Login() {
     const [loginFormData, setLoginFormData] = useState({ email: "", password: "" })
@@ -9,6 +10,14 @@ export default function Login() {
     const location = useLocation()
     const navigate = useNavigate()
     const from = location.state?.from || "/host"
+    const { login }= useAuth()
+    const { user } = useAuth()
+
+    useEffect(() => {
+        if (user) {
+            navigate("/host", {replace: true})
+        }
+    }, [user])
 
     function handleSubmit(e) {
         e.preventDefault()
@@ -16,7 +25,7 @@ export default function Login() {
         loginUser(loginFormData) 
             .then(data => {
                 setError(null)
-                localStorage.setItem("loggedin", true)
+                login(data.user)
                 navigate(from, {replace: true})
             })
             .catch(err => {
